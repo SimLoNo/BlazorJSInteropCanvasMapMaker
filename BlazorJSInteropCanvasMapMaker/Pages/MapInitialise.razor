@@ -1,0 +1,23 @@
+﻿@page "/InitialiseDialog"
+
+@using BlazorJSInteropCanvasMapMaker.Models
+@inject DialogService dialogService
+
+<h3>MapInitialise</h3>
+<Radzen.Blazor.RadzenCard>
+    <Radzen.Blazor.RadzenText Text="Select the size of the map in pixels."/>
+    <Radzen.Blazor.RadzenNumeric @bind-Value=@map.Size InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "enter value" }})" />
+</Radzen.Blazor.RadzenCard>
+<Radzen.Blazor.RadzenCard>
+    <Radzen.Blazor.RadzenText Text="Map name"/>
+    <Radzen.Blazor.RadzenTextBox @bind-Value=@map.Name />
+</Radzen.Blazor.RadzenCard>
+<RadzenButton Click="@((args) => dialogService.Close(map))" Variant="Variant.Flat" Text="Save" Style="width: 120px" />
+<RadzenButton Click="@((args) => dialogService.Close(null))" Variant="Variant.Flat" Text="Cancel" Style="width: 120px" />
+
+@code {
+    private MapModel map = new();
+
+    
+
+}

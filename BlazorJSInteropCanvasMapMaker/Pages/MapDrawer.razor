@@ -1,0 +1,35 @@
+﻿@page "/map"
+@using BlazorJSInteropCanvasMapMaker.Models
+@inject DialogService DialogService;
+@inject IJSRuntime Js;
+
+<RadzenRow>
+    <RadzenColumn Size="2">
+        <RadzenButton Text="New Map" Click="NewMap" />
+        <RadzenText Text="@($"Name: {WorkingMap?.Name}")"></RadzenText>
+        <RadzenText Text="@($"Size: {WorkingMap?.Size}Px")"></RadzenText>
+    </RadzenColumn>
+
+    <RadzenColumn Size="10">
+        <canvas id="MapCanvas" style="border-style:solid; border-color:red;border-width:10px;margin:0px;">
+
+        </canvas>
+    </RadzenColumn>
+</RadzenRow>
+
+@code {
+    private ElementReference MapColumn;
+    private MapModel? WorkingMap;
+    private async void NewMap(){
+        var result = await DialogService.OpenAsync<MapInitialise>("", new Dictionary<string, object>(),
+               new DialogOptions());
+        if (result is null)
+        {
+            return;
+        }
+        WorkingMap = result;
+        await Js.InvokeVoidAsync("SetCanvas", WorkingMap.Size);
+        StateHasChanged();
+
+    }
+}
