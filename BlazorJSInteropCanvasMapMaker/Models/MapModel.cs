@@ -1,4 +1,4 @@
-﻿using BlazorJSInteropCanvasMapMaker.Enums;
+﻿
 
 namespace BlazorJSInteropCanvasMapMaker.Models
 {
@@ -8,6 +8,6 @@ namespace BlazorJSInteropCanvasMapMaker.Models
         public int Size { get; set; }
         public string BaseTerrainColour { get; set; } = "None";
 
-        List<MapEntity> Entities { get; set; } = [];
+        public List<MapEntity> Entities { get; set; } = [];
     }
 }

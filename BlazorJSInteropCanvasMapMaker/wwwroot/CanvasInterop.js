@@ -12,10 +12,13 @@
     canvas.style.width = size+"px";
     canvas.style.height = size + "px";
     context.clearRect(0, 0, canvas.width, canvas.height);
-    canvas.style.border = "5px solid black";
     if (terrainColour != "" && terrainColour != "None") {
         context.fillStyle = terrainColour;
-        context.fillRect(0,0,size,size);
+        context.fillRect(0, 0, size, size);
+    }
+    else {
+        context.fillStyle = "Snow";
+        context.fillRect(0, 0, size, size);
     }
 
 }

@@ -1,4 +1,12 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿
+<RadzenMenu class="rz-background-color-secondary rz-color-on-secondary">
+    <RadzenMenuItem Text="Home" Icon="home" Path="" />
+    <RadzenMenuItem Text="Map" Icon="map" Path="map" />
+    <RadzenMenuItem Text="Counter" Icon="add_circle" Path="counter" />
+    <RadzenMenuItem Text="Weather" Icon="cloud" Path="weather" />
+    <RadzenMenuItem Text="" Icon="" Path="" />
+</RadzenMenu>
+@* <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Map Maker</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -30,7 +38,7 @@
             </NavLink>
         </div>
     </nav>
-</div>
+</div> *@
 
 @code {
     private bool collapseNavMenu = true;

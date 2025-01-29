@@ -3,23 +3,31 @@
 @inject DialogService DialogService;
 @inject IJSRuntime Js;
 
-<RadzenRow>
+<RadzenRow AlignItems="AlignItems.Normal" JustifyContent="JustifyContent.Normal" class="rz-h-100" Gap="0">
     <RadzenColumn Size="2">
-        <RadzenCard >
+        <RadzenCard class="rz-h-100">
             <RadzenButton Text="New Map" Click="NewMap" />
             <RadzenText Text="@($"Name: {WorkingMap?.Name}")"></RadzenText>
             <RadzenText Text="@($"Size: {WorkingMap?.Size}Px")"></RadzenText>
         </RadzenCard>
     </RadzenColumn>
 
-    <RadzenColumn id="CanvasColumn" Size="8">
-        
-            
+    <RadzenColumn >
+        <RadzenRow class="rz-overflow-scroll rz-h-100 rz-background-color-secondary-lighter" id="CanvasColumn" Size="8" AlignItems="AlignItems.Normal" JustifyContent="JustifyContent.Center">
+
+        </RadzenRow>
     </RadzenColumn>
 
     <RadzenColumn Size="2">
-        <RadzenCard>
-
+        <RadzenCard class="rz-h-100">
+            <RadzenStack Orientation="Orientation.Vertical">
+                @foreach (var layer in WorkingMap?.Entities)
+                {
+                    <RadzenCard>
+                        <RadzenText Text="@(layer.Name ?? "Unnamed layer" )"/>
+                    </RadzenCard>
+                }
+            </RadzenStack>
         </RadzenCard>
     </RadzenColumn>
 </RadzenRow>

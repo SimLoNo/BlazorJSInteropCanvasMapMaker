@@ -1,10 +1,9 @@
 ﻿@page "/InitialiseDialog"
 
-@using BlazorJSInteropCanvasMapMaker.Enums
 @using BlazorJSInteropCanvasMapMaker.Interfaces.DropDownServices
 @using BlazorJSInteropCanvasMapMaker.Models
 @inject DialogService dialogService
-@inject IDropDownStringOptionsService DropdownService;
+@inject ITerrainColourDropDownOptionsService TerrainDropdownService;
 
 <RadzenText Text="New Map" TextStyle="TextStyle.H3"/>
 <Radzen.Blazor.RadzenCard>
@@ -17,7 +16,7 @@
 </Radzen.Blazor.RadzenCard>
 <Radzen.Blazor.RadzenCard>
     <Radzen.Blazor.RadzenText Text="Background colour" />
-    <RadzenDropDown @bind-Value="@map.BaseTerrainColour" Data="@DropdownService.Options" Style="width:100%;max-width:400px;">
+    <RadzenDropDown @bind-Value="@map.BaseTerrainColour" Data="@TerrainDropdownService.Options" Style="width:100%;max-width:400px;">
 
     </RadzenDropDown>
 </Radzen.Blazor.RadzenCard>
