@@ -1,16 +1,25 @@
 ﻿@page "/InitialiseDialog"
 
+@using BlazorJSInteropCanvasMapMaker.Enums
+@using BlazorJSInteropCanvasMapMaker.Interfaces.DropDownServices
 @using BlazorJSInteropCanvasMapMaker.Models
 @inject DialogService dialogService
+@inject IDropDownStringOptionsService DropdownService;
 
-<h3>MapInitialise</h3>
+<RadzenText Text="New Map" TextStyle="TextStyle.H3"/>
 <Radzen.Blazor.RadzenCard>
     <Radzen.Blazor.RadzenText Text="Select the size of the map in pixels."/>
-    <Radzen.Blazor.RadzenNumeric @bind-Value=@map.Size InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "enter value" }})" />
+    <Radzen.Blazor.RadzenNumeric @bind-Value=@map.Size InputAttributes="@(new Dictionary<string,object>(){ { "aria-label", "enter value" }})" Style="width:100%;max-width:400px;" />
 </Radzen.Blazor.RadzenCard>
 <Radzen.Blazor.RadzenCard>
     <Radzen.Blazor.RadzenText Text="Map name"/>
-    <Radzen.Blazor.RadzenTextBox @bind-Value=@map.Name />
+    <Radzen.Blazor.RadzenTextBox @bind-Value=@map.Name Style="width:100%;max-width:400px;" />
+</Radzen.Blazor.RadzenCard>
+<Radzen.Blazor.RadzenCard>
+    <Radzen.Blazor.RadzenText Text="Background colour" />
+    <RadzenDropDown @bind-Value="@map.BaseTerrainColour" Data="@DropdownService.Options" Style="width:100%;max-width:400px;">
+
+    </RadzenDropDown>
 </Radzen.Blazor.RadzenCard>
 <RadzenButton Click="@((args) => dialogService.Close(map))" Variant="Variant.Flat" Text="Save" Style="width: 120px" />
 <RadzenButton Click="@((args) => dialogService.Close(null))" Variant="Variant.Flat" Text="Cancel" Style="width: 120px" />
